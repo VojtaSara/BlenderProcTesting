@@ -30,7 +30,6 @@ with open(args.camera, "r") as f:
         bproc.camera.add_camera_pose(matrix_world)
 
 # activate normal and depth rendering
-bproc.renderer.enable_normals_output()
 bproc.renderer.enable_depth_output(activate_antialiasing=False)
 
 # render the whole pipeline
