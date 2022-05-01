@@ -36,7 +36,7 @@ bproc.renderer.enable_depth_output(activate_antialiasing=False)
 data = bproc.renderer.render()
 
 # Render segmentation masks (per class and per instance)
-data.update(bproc.renderer.render_segmap(map_by=["class", "instance", "name"]))
+data.update(bproc.renderer.render_segmap(map_by=["instance", "name"]))
 
 # write the data to a .hdf5 container
 bproc.writer.write_hdf5(args.output_dir, data)
