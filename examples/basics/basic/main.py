@@ -10,7 +10,7 @@ args = parser.parse_args()
 bproc.init()
 
 # load the objects into the scene
-objs = bproc.loader.load_obj(args.scene)
+objs = bproc.loader.load_blend(args.scene)
 
 # define a light and set its location and energy level
 light = bproc.types.Light()
