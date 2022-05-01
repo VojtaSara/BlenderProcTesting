@@ -19,7 +19,7 @@ light.set_location([5, -5, 5])
 light.set_energy(1000)
 
 # define the camera resolution
-bproc.camera.set_resolution(512, 512)
+bproc.camera.set_resolution(1024, 1024)
 
 # read the camera positions file and convert into homogeneous camera-world transformation
 with open(args.camera, "r") as f:
@@ -34,6 +34,9 @@ bproc.renderer.enable_depth_output(activate_antialiasing=False)
 
 # render the whole pipeline
 data = bproc.renderer.render()
+
+# Render segmentation masks (per class and per instance)
+data.update(bproc.renderer.render_segmap(map_by=["class", "instance", "name"]))
 
 # write the data to a .hdf5 container
 bproc.writer.write_hdf5(args.output_dir, data)
